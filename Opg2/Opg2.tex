@@ -1,0 +1,281 @@
+\section{Den kinesiske restklassesætning}
+
+I opgave 2 \textbf{a)} benytter vi tankegangen bag den kinesiske restklassesætning, men ikke sætningen direkte som den er formuleret i noten. I opgave 2 \textbf{b)} benytter vi sætningen med notens notation.
+
+\subsection*{a)}
+
+Vi ønsker at finde løsningsmængden til det givne (kongruens)ligningssystem:
+\begin{equation}\label{eq:2a1}
+x \equiv 2 \; \; (\text{mod} \; 101)
+\end{equation}
+\begin{equation}\label{eq:2a2}
+x \equiv 1 \; \; (\text{mod} \; 17 )
+\end{equation}
+
+Vi genkender de givne modulo 101 og 17 som primtal, og har derfor sfd(101,17) = 1. Der er altså med garanti en løsningen til ligningssystemet ifølge den kinesiske restklassesætning. 
+
+Vi omskriver kongruensligningerne til følgende ligninger, hvor $c,d \in \mathds{Z}$:
+
+\begin{equation}
+x = 2 + 101c
+\end{equation}
+\begin{equation}\label{eq:xd}
+ x = 1+17d
+\end{equation}
+
+Ligningerne kan omskrives til følgende:
+
+\begin{equation}
+2 + 101c = 1 + 17d
+\end{equation}
+\begin{equation}
+\Rightarrow  17d = 1 + 101c
+\end{equation}
+
+Som igen kan omskrives til en kongruensligning:
+\begin{gather}\label{eq:17d}
+    17 d \equiv 1 \; \; (\text{mod} \; 101)
+\end{gather}
+
+Vi ønsker nu at finde et heltal $R$ der opfylder $17R \equiv 1 \; \; (\text{mod} \; 101)$, dvs. vi finder den multiplikativ inverse til 17, modulo 101. Dette gøres ved Euklids udvidede algoritme: 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+    $k$ & $r_k$ & $s$  & $R$  \\ \hline
+    1& 101   & 1  & 0  \\
+    2& 17   & 0 & 1  \\
+    3& 16   & 1  & $-$5 \\
+    4& 1    & $-$1 & 6 \\
+    5 & 0   & 17 & $-$101
+    \end{tabular}
+\end{table}
+
+Dermed får vi en værdi for $R$ til at være 6. Dette eftertjekkes ved $6\cdot17 = 102 \equiv 1 \; \; (\text{mod} \; 101)$. Det fundne $R$ er altså en løsning til \eqref{eq:17d}.\\
+
+Vi ganger med $R$ på begge sider af \eqref{eq:17d}:
+\begin{equation}
+17 dR \equiv 1R \; \; (\text{mod} \; 101)
+\end{equation}
+\begin{equation}
+\Rightarrow d \equiv 6  \; \; (\text{mod} \; 101)
+\end{equation}
+
+Dette giver os følgende mulige værdier for $d$: 
+\begin{gather}\label{eq:dLoesning}
+    d = 6 + 101\mathds{Z}
+\end{gather}
+
+Ved at indsætte \eqref{eq:dLoesning} i ligning \eqref{eq:xd}, findes løsningsmængden for $x$:
+\begin{gather*}
+    x = 17d + 1 = 17(6 + 101\mathds{Z}) + 1
+\end{gather*}
+
+Dvs. løsningsmængden er restklassen
+\begin{equation}
+x = 103 + 1717\mathds{Z}
+\end{equation}
+
+\textbf{Kontrol}\\
+Vi udfører kontrol af den fundne løsning.\\
+Kontrol af \eqref{eq:2a1}: Vi tjekker om en $x$ minus 1 er et multiplum af 17. 
+\begin{equation}
+103 + 1717 = 1 + 17d
+\end{equation}
+\begin{equation}
+\Rightarrow d = \frac{103+1717-1}{17} = 107
+\end{equation}
+
+Det udregnede $d$ er et heltal som forventet.\\
+\\
+Kontrol af \eqref{eq:2a2}: Vi tjekker om $x$ minus 2 er et multiplum af 101.
+\begin{equation}
+103 + 1717 = 2 + 101d
+\end{equation}
+\begin{equation}
+\Rightarrow d = \frac{103+1717-2}{101} = 18
+\end{equation}
+
+Det udregnede $d$ er et heltal som forventet.
+
+\subsection*{b)}
+Vi ønsker at undersøge, om følgende ligningssystem har en ikke-tom løsningsmængde:
+\begin{equation}\label{eq:A}
+x \equiv 7 \text{ (mod 15)}
+\end{equation}
+\vspace{-0.55cm}
+\begin{equation}\label{eq:B}
+x \equiv 14 \text{  (mod 33)}    
+\end{equation}
+
+Vi ser at $\text{sfd}(15, 33) = 3$. Der er dermed ikke garanteret en løsning til ligningssystemet.
+
+Prøver vi samme fremgangsmåde som i opgave 2 \textbf{a)}, får vi følgende ligninger, hvor $c,d \in \mathds{Z}$:
+\begin{gather*}
+    7 + 15c = 14 + 33d  \\
+    \Rightarrow 33d = -7 + 15c
+\end{gather*}
+Ligningerne kan omskrives til kongruensligningen
+\begin{gather*}
+    33 d \equiv -7 \; \; (\text{mod} \; 15)
+\end{gather*}
+
+Vi skal dermed finde $R$ som opfylder $33R \equiv 1 \; \; (\text{mod} \; 15)$, svarende til den multiplikativ inverse af 33, modulo 15:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+    $k$ & $r_k$ & $s$  & $R$  \\ \hline
+    1& 33   & 1  & 0  \\
+    2& 15   & 0 & 1  \\
+    3& 3   & 1  & $-$2 \\
+    4& 0    & $-$5 & 1
+    \end{tabular}
+\end{table}
+
+Vi kan altså ikke finde et tal $R$ der opfylder $33R \equiv 1 \; \; (\text{mod} \; 15)$.\\
+%\subsection*{b) Magnus}
+
+%Vi vil undersøge om følgende system af kongruensligninger har en løsning:
+%\begin{equation}\label{eq:A}
+%x \equiv 7 \text{ (mod 15)}
+%\end{equation}
+%\vspace{-0.55cm}
+%\begin{equation}\label{eq:B}
+%x \equiv 14 \text{  (mod 33)}    
+%\end{equation}
+
+Vinket er at benytte den kinesiske restklassesætning i omvendt rækkefølge. Dvs. vi kan tænke på hver af ligningerne \eqref{eq:A} og \eqref{eq:B} som fremkommet ved at benytte den kinesiske restklassesætning (KRS).\\
+\\
+\textbf{Den kinesiske restklassesætning}\\
+Når vi benytter den kinesiske restklassesætning, omskriver vi et system af kongruensligninger
+\begin{equation}
+x \equiv b_1 \text{  (mod } n_1), \quad b_1 \in \mathbb{Z}, \quad n_1 \in \mathbb{N}
+\end{equation}
+\vspace{-0.55cm}
+\begin{equation}
+x \equiv b_2 \text{  (mod } n_2), \quad b_2 \in \mathbb{Z}, \quad n_2 \in \mathbb{N}
+\end{equation}
+
+til én kongruensligning på formen
+\begin{equation}\label{eq:KRS}
+x \equiv u_1 n_1 b_2 + u_2 n_2 b_1 \text{ (mod } n_1 n_2)
+\end{equation}
+
+der overholder følgende krav:
+\begin{equation}\label{eq:krav1}
+\text{sfd}(n_1,n_2) = 1
+\end{equation}
+\vspace{-0.55cm}
+\begin{equation}\label{eq:krav2}
+u_1 n_1 + u_2 n_2 = 1, \quad u \in \mathbb{Z}
+\end{equation}
+
+
+\textbf{Første ligning:} $x \equiv 7 \text{ (mod 15)}$\\
+Vi kræver at \eqref{eq:A} er fremkommet ved at anvende KRS. Vi sammenligner \eqref{eq:A} og kravet \eqref{eq:KRS}. Det ses at
+\begin{equation}\label{eq:n1n2produkt1}
+n_1 n_2 = 15
+\end{equation}
+
+For at benytte KRS, skal vi overholde kravet \eqref{eq:krav1}. En løsning, der overholder \eqref{eq:krav1} og \eqref{eq:n1n2produkt1}, er primtallene 3 og 5:
+\begin{equation*}
+n_1 = 3, \quad n_2 = 5
+\end{equation*}
+
+Vi bestemmer nu $u_1$ og $u_2$ så \eqref{eq:krav2} er overholdt. En løsning er 
+\begin{equation*}
+u_1 = 2, \quad u_2 = -1
+\end{equation*}
+
+da \begin{equation*}
+u_1 n_1 + u_2 n_2 = 2 \cdot 3 + (-1) \cdot 5 = 1
+\end{equation*}
+
+Vi skal nu bestemme $b_1$ og $b_2$. For at ende med ligningen \eqref{eq:A} skal \eqref{eq:KRS} og \eqref{eq:A} have samme indmad til højre for kongruenstegnene. Dvs. 
+\begin{equation*}
+7 = u_1 n_1 b_2 + u_2 n_2 b_1
+\end{equation*}
+
+En mulig løsning er 
+\begin{equation*}
+b_1 = 1, \quad b_2 = 2
+\end{equation*}
+
+da
+\begin{equation*}
+u_1 n_1 b_2 + u_2 n_2 b_1 = 2 \cdot 3 \cdot 2 + (-1) \cdot 5 \cdot 1 = 12 - 5 = 7
+\end{equation*}
+
+Vi har nu omskrevet ligningen \eqref{eq:A} til systemet
+\begin{equation}\label{eq:A1}
+x \equiv 1 \text{ (mod 3)}
+\end{equation}
+\begin{equation}\label{eq:A2}
+x \equiv 2 \text{  (mod 5)}    
+\end{equation}
+
+
+\textbf{Anden ligning:} $x \equiv 14 \text{ (mod 33)}$\\
+Vi kræver at \eqref{eq:B} er fremkommet ved at anvende KRS. Vi sammenligner \eqref{eq:B} og kravet \eqref{eq:KRS}. Det ses at
+\begin{equation}\label{eq:n1n2produkt2}
+n_1 n_2 = 33
+\end{equation}
+
+For at benytte KRS, skal vi overholde kravet \eqref{eq:krav1}. En løsning, der overholder \eqref{eq:krav1} og \eqref{eq:n1n2produkt2}, er primtallene 3 og 11:
+\begin{equation*}
+n_1 = 3, \quad n_2 = 11
+\end{equation*}
+
+Vi bestemmer nu $u_1$ og $u_2$ så \eqref{eq:krav2} er overholdt. En løsning er 
+\begin{equation*}
+u_1 = 4, \quad u_2 = -1
+\end{equation*}
+
+da \begin{equation*}
+u_1 n_1 + u_2 n_2 = 4 \cdot 3 + (-1) \cdot 11 = 1
+\end{equation*}
+
+Vi skal nu bestemme $b_1$ og $b_2$. For at ende med ligningen \eqref{eq:B} skal \eqref{eq:KRS} og \eqref{eq:B} have samme indmad til højre for kongruenstegnene. Dvs. 
+\begin{equation*}
+14 = u_1 n_1 b_2 + u_2 n_2 b_1
+\end{equation*}
+
+En mulig løsning er 
+\begin{equation*}
+b_1 = 2, \quad b_2 = 3
+\end{equation*}
+
+da
+\begin{equation*}
+u_1 n_1 b_2 + u_2 n_2 b_1 = 4 \cdot 3 \cdot 3 + (-1) \cdot 11 \cdot 2 = 36 - 22 = 14
+\end{equation*}
+
+Vi har nu omskrevet ligningen \eqref{eq:B} til systemet
+\begin{equation}\label{eq:B1}
+x \equiv 2 \text{ (mod 3)}
+\end{equation}
+\vspace{-0.55cm}
+\begin{equation}\label{eq:B2}
+x \equiv 3 \text{  (mod 11)}    
+\end{equation}
+
+\textbf{Løsningsmængde}\\
+Det oprindelige ligningssystem \eqref{eq:A}-\eqref{eq:B} er ækvivalent med systemet givet ved de fire ligninger \eqref{eq:A1}, \eqref{eq:A2}, \eqref{eq:B1} og \eqref{eq:B2}.\\
+\\
+Antag nu at der eksisterer løsninger til det oprindelige system. Betragt nu de to kongruensligninger \eqref{eq:A1} og \eqref{eq:B1}:
+\begin{equation}
+x \equiv 1 \text{ (mod 3)} \quad \land \quad x \equiv 2 \text{ (mod 3)}
+\end{equation}
+Ved brug af lemma 3 fra noten:
+Hvis $x \equiv 1  \text{ (mod 3)}$ og $x \equiv 2 \text{ (mod 3)}$, \\så er 
+\begin{equation}\label{eq:modstrid}
+1 \equiv 2 \text{ (mod 3)}
+\end{equation}
+Men \eqref{eq:modstrid} fører til en modstrid; 1 delt med 3 er 0 med 1 til rest. 2 delt med 3 er 0 med 2 til rest.\\
+\\
+Antagelsen om at der eksisterer løsninger fører til en modstrid, så det oprindelige ligningssystem \eqref{eq:A}-\eqref{eq:B} (og således også det omskrevne ligningssystem givet ved \eqref{eq:A1}, \eqref{eq:A2}, \eqref{eq:B1} og \eqref{eq:B2}) har en tom løsningsmængde.\\
+
+I \texttt{Java} tjekker vi for heltal $c=0$ til $c=100000000$, om der eksisterer et heltal $d$ der opfylder $7 + 15c = 14 + 33d$. Dvs. for hvert $c$ isolerer vi $d$ og tjekker, om det er et heltal. Simuleringen giver ingen resultater, som forventet.
+
+
